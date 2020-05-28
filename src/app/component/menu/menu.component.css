@@ -1,0 +1,30 @@
+.sidenav{
+    position: fixed;
+    background-color: rgb(65, 41, 172); 
+    width:100px;  
+}
+.mat-list-item{
+   color: white;
+   align-items: center;
+  
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    color: white;
+}
+.icon{
+    padding-right: 10px;
+}
+.content{    
+    padding: 15px;
+}
+i{
+   font-size: 30px;
+   margin-top: 0px;
+   
+}
+
+
