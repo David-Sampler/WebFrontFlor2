@@ -16,7 +16,7 @@ export class UsuarioComponent implements OnInit {
 
   navegar(){
     console.log("Navegando")
-    this.router.navigate(['/creatercliente'])
+    this.router.navigate(['/createrusuario'])
   }
 
 }

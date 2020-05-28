@@ -1,1 +1,40 @@
-<p>create-usuarios works!</p>
+<div class="principal" >
+  <mat-card>
+    <mat-card-title style="font-size: 20px;" style="text-align: center;">Cadastro de Usuarios
+
+      <form class="example-form"  [formGroup]="formUsuario">
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Ex. Ana Maria"  class="form-control" formControlName="nome" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Ex. Ana12@gmail.com" formControlName="email" value="">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+          <mat-label>Insira sua senha</mat-label>
+          <input style="width: 50%;" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+
+
+      </form>
+
+      <button mat-raised-button color="primary"  (click) = createUser()>Salvar</button>
+      <button mat-raised-button color="accent">Cancelar</button>
+
+
+    </mat-card-title>
+
+  </mat-card>
+
+
+</div>
