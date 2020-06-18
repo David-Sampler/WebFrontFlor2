@@ -1,7 +1,9 @@
 .principal{
     display: flex;
-  
+    justify-content: center;
     align-content: center;
+    justify-items: center;
+    margin-top: 40px;
     width: 100%;
     
 }

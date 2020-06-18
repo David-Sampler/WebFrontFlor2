@@ -1,0 +1,44 @@
+
+<div class="principal" >
+  <mat-card>
+    <mat-card-title style="font-size: 20px;" style="text-align: center;">Cadastro Clientes
+
+      <div class="example-form" [formGroup]='formulario' >
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Ex. Ana Maria"  formControlName="nome" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Endereço</mat-label>
+          <input matInput placeholder="Av.Tavares" formControlName="endereco">
+        </mat-form-field>
+
+      
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Ex. Ana12@gmail.com" formControlName="email">
+        </mat-form-field>
+   
+         
+          <mat-form-field class="example-full-width">
+            <mat-label>Telefone</mat-label>
+            <span matPrefix>(91) &nbsp;</span>
+            <input type="tel" matInput placeholder="00000 1111" formControlName="telefone">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+     
+
+      </div>
+
+      <button class="btn" mat-raised-button color="primary" [disabled] = "!formulario.valid" (click)="updateCli()">Atualizar</button>
+      <button mat-raised-button color="accent" routerLink="/clientes">Cancelar</button>
+
+
+    </mat-card-title>
+
+  </mat-card>
+
+
+</div>

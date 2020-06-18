@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,LOCALE_ID} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,8 +9,8 @@ import { MenuComponent } from './component/menu/menu.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
-1
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -23,12 +23,26 @@ import { UsuarioComponent } from './views/usuario/usuario.component';
 import { ClientesComponent } from './views/clientes/clientes.component';
 import { ServicosComponent } from './views/servicos/servicos.component';
 import { VendasComponent } from './views/vendas/vendas.component';
-import { CreateClientesComponent } from './component/telasViews/create-clientes/create-clientes.component';
+import { CreateClientesComponent } from './telasViews/create-clientes/create-clientes.component';
 import { CreateUsuariosComponent } from './telasViews/create-usuarios/create-usuarios.component';
 import { CreateServicosComponent } from './telasViews/create-servicos/create-servicos.component';
 import { CreateVendasComponent } from './telasViews/create-vendas/create-vendas.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
 import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { MatNativeDateModule } from '@angular/material/core';
+import { TableCliComponent } from './telasViews/table-cli/table-cli.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UpdateComponent } from './telasViews/update/update.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DialogMessagemComponent } from './dialog-messagem/dialog-messagem.component';
+import { TableServicosComponent } from './telasViews/table-servicos/table-servicos.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+
+
 
 @NgModule({
   declarations: [
@@ -45,6 +59,11 @@ import {MatIconModule} from '@angular/material/icon';
     CreateUsuariosComponent,
     CreateServicosComponent,
     CreateVendasComponent,
+    TableCliComponent,
+    UpdateComponent,
+    DialogMessagemComponent,
+    TableServicosComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -60,9 +79,17 @@ import {MatIconModule} from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
+ 
   ],
-  providers: [],
+  providers: [MatDatepickerModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

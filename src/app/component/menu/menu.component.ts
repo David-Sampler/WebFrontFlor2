@@ -11,9 +11,9 @@ export class MenuComponent implements OnInit {
   constructor(private server:ServiceService) { }
 
   ngOnInit(): void {
-    this.server.getClientes().subscribe((res)=>{
+   /* this.server.getClientes().subscribe((res)=>{
       console.log(res)
-    })
+    })*/
   }
 
 }

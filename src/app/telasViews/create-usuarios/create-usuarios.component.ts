@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Usuario } from './../../model/modelUsuario';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
@@ -14,26 +15,23 @@ export class CreateUsuariosComponent implements OnInit {
   hide = true;
   formUsuario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private server: ServiceService) {
-  }
+  constructor(private formBuilder: FormBuilder, private server: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.configForm()
-    this.listUser()
   }
 
   configForm() {
-
     this.formUsuario = this.formBuilder.group({
       nome: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
-      password: [""]
+      password: ["",Validators.required]
 
     })
   }
 
-  listUser(){
-    this.server.getAllUser().subscribe((res)=>{
+  listUser() {
+    this.server.getAllUser().subscribe((res) => {
       console.log(res)
     })
   }
@@ -42,6 +40,11 @@ export class CreateUsuariosComponent implements OnInit {
     this.server.postUsuario(this.formUsuario.value).subscribe((res) => {
       console.log(res)
     })
+    this.formUsuario.reset()
+  }
+
+  btnCancel() {
+    this.router.navigate(['/usuarios'])
   }
 
 }

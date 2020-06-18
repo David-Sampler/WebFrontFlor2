@@ -1,1 +1,34 @@
-<p>create-servicos works!</p>
+<p style="background-color: teal; color: white; border-radius: 50px; width: 200px; text-align: center; padding: 5px;">Cadastra Serviços</p>
+<h1>{{contador}}</h1>
+<div class="principal" >
+    <mat-card>
+      <mat-card-title style="font-size: 20px;" style="text-align: center;">Insira os serviços
+        
+        <div class="example-form" [formGroup]='formulario' >
+  
+          <mat-form-field class="example-full-width">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Ex. Massagem Modeladora"   formControlName="tipo" >
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <mat-label>Valor</mat-label>
+            <input matInput placeholder="Ex. Valor do serviço" type="number" formControlName="valor">
+          </mat-form-field>
+  
+        
+          
+       
+  
+        </div>
+  
+        <button class="btn" mat-raised-button color="primary" [disabled] = "!formulario.valid" (click)="createServico()" >Salvar</button>
+        <button mat-raised-button color="accent" routerLink="/clientes">Cancelar</button>
+  
+  
+      </mat-card-title>
+  
+    </mat-card>
+  
+  
+  </div>
