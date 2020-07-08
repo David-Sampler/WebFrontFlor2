@@ -22,7 +22,7 @@ export class UpdateComponent implements OnInit {
       nome: ["", Validators.required],
       endereco: ["", [Validators.required]],
       telefone: ["", Validators.required],
-      email: ["", [Validators.required,Validators.email]]
+      email: ["", [Validators.required, Validators.email]]
     })
   }
 
@@ -39,15 +39,17 @@ export class UpdateComponent implements OnInit {
       this.escolha = res
       this.listarUsuario()
     })
-  
+
   }
 
-  async updateCli(){
-   
-    let id = this.escolha._id   
-    const date = await this.service.updateCliente(id,this.formulario.value)
+  async updateCli() {
+
+    let id = this.escolha._id
+    const date = await this.service.updateCliente(id, this.formulario.value)
     console.log(date)
-  
+    this.service.openMessagem("Dado atualizado com sucesso", "")
+    this.router.navigate(['/tableclientes'])
+
 
   }
 
@@ -58,6 +60,6 @@ export class UpdateComponent implements OnInit {
     this.formulario.get('telefone').setValue(this.escolha.telefone)
   }
 
- 
+
 
 }

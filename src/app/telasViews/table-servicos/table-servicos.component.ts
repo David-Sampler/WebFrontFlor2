@@ -7,21 +7,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table-servicos.component.css']
 })
 export class TableServicosComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'nome', "valor","action"];
+  displayedColumns: string[] = ['position', 'nome', "valor", "action"];
   dataSource
-  constructor(private service:ServiceService) { }
+  constructor(private service: ServiceService) { }
 
   ngOnInit(): void {
     this.todosServicos()
   }
 
 
-  todosServicos(){
-   return this.service.allServicos().subscribe((res)=>{console.log(res)})
+  todosServicos() {
+    return this.service.allServicos().subscribe((res) => {
+      this.dataSource = res
+      console.log(res)
+    }
+
+    )
+
   }
 
-  delServicos(){
-
+  deletarServico(id){
+    this.service.deleteServico(id).subscribe(()=>{
+      console.log("Servico excluido")
+    })
   }
 
 }

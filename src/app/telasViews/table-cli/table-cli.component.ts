@@ -39,9 +39,9 @@ export class TableCliComponent implements OnInit {
       if (res == true) {
         this.server.deleteCliente(id).subscribe(() => {
           this.server.openMessagem("Excluido com sucesso","")       
-       
-            this.route.navigate(['/'])  
-         
+          this.getClientes()
+            this.route.navigate(['/tableclientes'])  
+           
         })
       } else {
         console.log('Sair')

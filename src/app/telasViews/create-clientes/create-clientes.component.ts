@@ -10,6 +10,7 @@ import { ServiceService } from '../../services/service.service'
 export class CreateClientesComponent implements OnInit {
 
   formulario: FormGroup
+ 
 
   constructor(private router: Router, private formBuilder: FormBuilder, private service: ServiceService) { }
 
@@ -21,10 +22,16 @@ export class CreateClientesComponent implements OnInit {
 
   configForm() {
     this.formulario = this.formBuilder.group({
-      nome: ["", [Validators.required,Validators.minLength(5)]],
-        endereco: ["", Validators.required],
-        telefone: ["",Validators.required],
-        email: ["", [Validators.required, Validators.email]]
+      nome: ["", [Validators.required, Validators.minLength(5)]],
+
+      endereco: this.formBuilder.group({
+        rua: ["", Validators.required],
+        numero: ["", Validators.required],
+        complemento: ["", Validators.required]
+      }),
+      
+      telefone: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]]
     })
   }
 
@@ -39,11 +46,13 @@ export class CreateClientesComponent implements OnInit {
     this.router.navigate(['/usuarios'])
   }
 
-  exibirMsg(){
-    this.service.openMessagem("Cliente Cadastrado","Muito obrigado")
+  exibirMsg() {
+    this.service.openMessagem("Cliente Cadastrado", "Muito obrigado")
   }
 
-  
+ peganome(evento:KeyboardEvent){
+   console.log((<HTMLInputElement>evento.target).value)
+ }
 
 
 }

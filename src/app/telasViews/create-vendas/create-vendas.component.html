@@ -1,1 +1,110 @@
-<p>create-vendas works!</p>
+<mat-card style=" height: 200px;">
+    <mat-card-title>Vendas</mat-card-title>
+
+    <div class="principal">
+
+        <div style="width: 90%; display: flex; justify-content: space-around;">
+
+            <mat-form-field appearance="fill" style="width: 30%;">
+
+                <mat-label>Selecione Usuario</mat-label>
+                <mat-select [formControl]="usuarioControl" required>
+
+                    <mat-option *ngFor="let user of usuarios; let i = index" [value]="usuarios[i]">
+                        {{user.nome}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="usuarioControl.hasError('required')">Adicioner o Usuario</mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" style="width: 50%;">
+                <mat-label>Selecione Cliente</mat-label>
+                <mat-select [formControl]="selectCliente" required>
+
+                    <mat-option *ngFor="let cli of clientes;let i = index" [value]="clientes[i]">
+                        {{cli.nome}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="selectCliente.hasError('required')">Adicioner o Cliente</mat-error>
+
+            </mat-form-field>
+
+        </div>
+
+
+        <div style="width: 90%; display: flex; justify-content: space-around; margin-top: 20px;">
+
+            <mat-form-field appearance="fill" style="width: 40%;">
+                <mat-label>Selecione serviço</mat-label>
+                <mat-select [formControl]="servicoControl" required>
+                    <mat-option *ngFor="let serv of servico; let i = index" [value]="servico[i]">
+                        {{serv.tipo}}
+                    </mat-option>
+
+                </mat-select>
+                <mat-error *ngIf="servicoControl.hasError('required')">Servico</mat-error>
+
+            </mat-form-field>
+
+            <button class="btn" mat-raised-button color="primary" (click)="addServico()"
+                [disabled]='!servicoControl.valid'>Add</button>
+
+
+        </div>
+
+
+
+    </div>
+
+</mat-card>
+
+
+
+
+<mat-card style="margin-top: 40px;">
+
+    <mat-list *ngFor="let c of servFeito; let i = index" style="display: flex; ">
+
+        <mat-list-item role="listitem" style="width: 50% !important;">
+            <h2>{{i+1}}</h2>   
+        </mat-list-item>
+
+        <mat-list-item role="listitem">
+
+            <h2>{{c.tipo}}</h2> 
+        </mat-list-item>
+
+        <mat-list-item role="listitem">
+            <h2>{{c.valor | currency : 'R$'}}</h2>   
+        </mat-list-item>
+
+        <mat-list-item role="listitem" style="display:flex ; justify-content: center; width: 10px; margin-bottom: 10px;">
+            <button mat-fab color="accent" style=" width: 45px !important; height: 45px; display: flex; justify-content: center;" 
+                (click)='removerComprar(i)'>
+                <mat-icon style="line-height: 0.5 !important;" >delete</mat-icon>
+            </button>
+        </mat-list-item>
+
+    </mat-list>
+
+
+    <mat-card style="margin-top: 20px; background-color: darkcyan; color: white;">
+
+        <mat-list role="list" style="display: flex; justify-content: space-evenly;">
+
+            <h1>Total:</h1>
+            <h1>{{total | currency : 'R$'}} </h1>
+
+
+        </mat-list>
+    </mat-card>
+
+</mat-card>
+
+
+<div style="display: flex; justify-content: space-around;">
+
+    <button class="btn2" mat-raised-button color="primary" (click)="finalizarCompra()">Finalizar</button>
+    <button class="btn2" mat-raised-button color="accent" routerLink="/vendas">Cancelar</button>
+</div>

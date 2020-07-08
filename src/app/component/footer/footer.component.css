@@ -6,9 +6,9 @@
 }
 
 .footer{
-    position: fixed;
-    height: 200px;
-    justify-content: flex-end;
+    position: fixed;  
+    height: 100px;  
+    justify-content: center;
     bottom: 0;
     display: flex;
     color: rgb(255, 255, 255);

@@ -8,37 +8,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-servicos.component.css']
 })
 export class CreateServicosComponent implements OnInit {
-  
-  formulario:FormGroup
-  contador=1
 
-  constructor(private form:FormBuilder,private server:ServiceService) { 
+  formulario: FormGroup
+  contador = 1
+
+  constructor(private form: FormBuilder, private server: ServiceService) {
 
   }
 
   ngOnInit(): void {
     this.formulario = this.form.group({
-        tipo:["",[Validators.required]],
-        valor:["",[Validators.required]]
+      tipo: ["", [Validators.required]],
+      valor: ["", [Validators.required]]
     })
   }
 
 
-  async createServico(){
-      const dado = await this.server.insertServicos(this.formulario.value)
-      console.log(dado)
-       return dado
-      console.log(dado,"Produto Cadastrado")
+  async createServico() {
+    console.log(this.formulario.value)
+    const servico = await this.server.insertServicos(this.formulario.value)
+    console.log(servico)
+    this.server.openMessagem("Serviço Cadastrado com sucesso", "")
+
   }
 
-  contagemRegressiva(){
-    setInterval(()=>{
-     
-      let c = this.contador++
-      console.log(c)
-        
-         
-    },1000)
-  }
+
+
 
 }

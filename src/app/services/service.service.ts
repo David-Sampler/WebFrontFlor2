@@ -13,7 +13,7 @@ import { DialogMessagemComponent } from '../dialog-messagem/dialog-messagem.comp
 })
 export class ServiceService {
 
-  url = "https://app-apiflor.herokuapp.com"
+  url = "http://apiflor-com-br.umbler.net"
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
@@ -29,6 +29,12 @@ export class ServiceService {
   postUsuario(user: Usuario): Observable<Usuario> {
     console.log("chegando aqui")
     return this.http.post<Usuario>(this.url + "/insertUser", user)
+  }
+
+  login(data: any): Observable<any> {
+
+    return this.http.post<any>(this.url + "/login", data)
+
   }
 
 
@@ -47,9 +53,7 @@ export class ServiceService {
   }
 
   updateCliente(id, cliente) {
-
     return this.http.put(this.url + '/atualizarcliente/' + id, cliente).toPromise()
-
   }
 
   filtroCli(id): Observable<any> {
@@ -60,19 +64,23 @@ export class ServiceService {
   //-------------------------------------------//
 
   //metodos Servicos
-   allServicos():Observable<any>{
-     console.log("selecionar servico")
-     return this.http.get<any>(this.url+"/allservicos")
-   }
-  
-   insertServicos(servico){
-         return this.http.post(this.url+'/insertservico',servico).toPromise()
+  allServicos(): Observable<any> {
+    console.log("selecionar servico")
+    return this.http.get<any>(this.url + "/allservicos")
   }
 
+  insertServicos(servico) {
+    return this.http.post(this.url + '/insertservico', servico).toPromise()
+  }
+
+  deleteServico(id): Observable<any> {
+    return this.http.delete<any>(this.url + '/deleteservico/' + id)
+  }
+  //messagens
   openMessagem(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 3000,
-      horizontalPosition:"start",
+      horizontalPosition: "end",
       panelClass: "msg-sucess"
     }
 
@@ -83,12 +91,23 @@ export class ServiceService {
     return this.dialog.open(DialogMessagemComponent,
       {
         width: '550px',
-        data: { name: 'austin' },        
+        data: { name: 'austin' },
 
       });
 
   }
+ 
+  //metodos de vendas
+  confirmaVendas(venda:any): Observable<any> {
+    console.log("Chegou vendas")
+    return this.http.post<any>(this.url +'/insertvendas',venda)
+    
+   }
+
 }
+
+
+
 
 
 

@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
+
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -27,8 +29,9 @@ import { CreateClientesComponent } from './telasViews/create-clientes/create-cli
 import { CreateUsuariosComponent } from './telasViews/create-usuarios/create-usuarios.component';
 import { CreateServicosComponent } from './telasViews/create-servicos/create-servicos.component';
 import { CreateVendasComponent } from './telasViews/create-vendas/create-vendas.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
+
+import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -40,9 +43,17 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DialogMessagemComponent } from './dialog-messagem/dialog-messagem.component';
 import { TableServicosComponent } from './telasViews/table-servicos/table-servicos.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatRadioModule} from '@angular/material/radio';
 
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { LoginComponent } from './component/login/login.component';
+import { ContainerComponent } from './component/container/container.component';
+import { AutenticacaoComponent } from './component/autenticacao/autenticacao.component';
 
+import {MatSelectModule} from '@angular/material/select';
 
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -63,6 +74,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     UpdateComponent,
     DialogMessagemComponent,
     TableServicosComponent,
+    LoginComponent,
+    ContainerComponent,
+    AutenticacaoComponent,
  
   ],
   imports: [
@@ -86,10 +100,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatTableModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
- 
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatRadioModule
   ],
-  providers: [MatDatepickerModule ],
+  providers: [MatDatepickerModule,{provide: LOCALE_ID, useValue: 'pt'} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
