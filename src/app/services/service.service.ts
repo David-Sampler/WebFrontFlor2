@@ -13,7 +13,7 @@ import { DialogMessagemComponent } from '../dialog-messagem/dialog-messagem.comp
 })
 export class ServiceService {
 
-  url = "http://apiflor-com-br.umbler.net"
+  url = "https://apiflor-com-br.umbler.net"
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
