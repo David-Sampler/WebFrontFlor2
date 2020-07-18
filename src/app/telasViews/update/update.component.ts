@@ -20,7 +20,12 @@ export class UpdateComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private service: ServiceService, private route: ActivatedRoute) {
     this.formulario = this.formBuilder.group({
       nome: ["", Validators.required],
-      endereco: ["", [Validators.required]],
+      endereco: this.formBuilder.group({
+        rua: ["", Validators.required],
+        numero: ["", Validators.required],
+        complemento: ["", Validators.required]
+      }),
+
       telefone: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]]
     })
@@ -31,9 +36,8 @@ export class UpdateComponent implements OnInit {
   }
 
   getFilte() {
-
     let id = this.route.snapshot.paramMap.get('id')
-
+    console.log(id)
     this.service.filtroCli(id).subscribe((res) => {
       console.log(res)
       this.escolha = res

@@ -10,12 +10,23 @@
           <input matInput placeholder="Ex. Ana Maria"  formControlName="nome" >
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-          <mat-label>Endereço</mat-label>
-          <input matInput placeholder="Av.Tavares" formControlName="endereco">
-        </mat-form-field>
+        <div  formGroupName="endereco" >
 
-      
+          <mat-form-field class="example-full-width"style="width: 85%;" >
+            <mat-label>Rua</mat-label>
+            <input matInput placeholder="alamenda vilhena" formControlName="rua">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" style="width: 7%;">
+            <mat-label>N°</mat-label>
+            <input matInput placeholder="19" formControlName="numero">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>proximidade</mat-label>
+            <input  matInput placeholder="Prox do posto" formControlName="complemento">
+          </mat-form-field>
+        </div>
         <mat-form-field class="example-full-width">
           <mat-label>Email</mat-label>
           <input matInput placeholder="Ex. Ana12@gmail.com" formControlName="email">

@@ -48,13 +48,15 @@ export class LoginComponent implements OnInit {
         this.modelo
         console.log(res.token)
         window.localStorage.setItem('token', res.token)
+
         this.cena = false
         this.modelo = 'indeterminate'
         setTimeout(() => {
           this.modelo = 'indeterminate'
           return this.router.navigate(['/'])
         }, 4000)
-
+        
+        
       }
 
 

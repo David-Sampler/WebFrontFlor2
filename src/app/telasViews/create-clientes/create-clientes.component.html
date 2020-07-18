@@ -1,47 +1,41 @@
 <div class="principal">
-  <mat-card >
-    <mat-card-title >Cadastro Clientes
-   
+  <mat-card  >
+    <mat-card-title >Cadastro Clientes   
     
       <div class="example-form" [formGroup]='formulario'>
 
         <div>
-        <mat-form-field class="example-full-width" style="width: 90%; ">
+        <mat-form-field class="example-full-width" >
           <mat-label>Nome</mat-label>
           <input matInput placeholder="Ex. Ana Maria" formControlName="nome" (keyup)='peganome($event)'>
-        </mat-form-field>
-
-        
+        </mat-form-field>        
 
       </div>
       
-        <mat-form-field class="example-full-width"  style="width: 90%; margin-right: 10px;">
+        <mat-form-field class="example-full-width" >
           <mat-label>Email</mat-label>
           <input matInput placeholder="Ex. Ana12@gmail.com" formControlName="email">
         </mat-form-field>
 
-        <div  formGroupName="endereco"  style="width: 100%; ">
+        <div  formGroupName="endereco" >
 
-          <mat-form-field class="example-full-width" style="width: 30%;">
+          <mat-form-field class="example-full-width"style="width: 85%;" >
             <mat-label>Rua</mat-label>
             <input matInput placeholder="alamenda vilhena" formControlName="rua">
           </mat-form-field>
 
-          <mat-form-field class="example-full-width" style="width: 5%;">
+          <mat-form-field class="example-full-width" style="width: 7%;">
             <mat-label>N°</mat-label>
             <input matInput placeholder="19" formControlName="numero">
           </mat-form-field>
 
-          <mat-form-field class="example-full-width" style="width: 50%;  ">
-            <mat-label>proximo ao mercado</mat-label>
+          <mat-form-field class="example-full-width">
+            <mat-label>proximidade</mat-label>
             <input  matInput placeholder="Prox do posto" formControlName="complemento">
           </mat-form-field>
         </div>
 
-
-
-
-        <mat-form-field class="example-full-width"  style="width: 50%; margin-right: 10px;">
+        <mat-form-field class="example-full-width" >
           <mat-label>988552233</mat-label>
           <span matPrefix>(91) &nbsp;</span>
           <input type="tel" matInput placeholder="00000 1111" formControlName="telefone">
@@ -50,10 +44,12 @@
 
       </div>
 
-      <div style="display: flex; justify-content: flex-start;">
-        <button class="btn" mat-raised-button color="primary" [disabled]="!formulario.valid"
+      <div class="btn2"  >
+
+        <button mat-raised-button color="primary" [disabled]="!formulario.valid"
         (click)="createCliente()">Salvar</button>
         <button mat-raised-button color="accent" routerLink="/clientes">Cancelar</button>
+
       </div>
       
       

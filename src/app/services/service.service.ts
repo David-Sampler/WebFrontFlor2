@@ -12,7 +12,7 @@ import { DialogMessagemComponent } from '../dialog-messagem/dialog-messagem.comp
   providedIn: 'root'
 })
 export class ServiceService {
-
+  // https://apiflor-com-br.umbler.net/
   url = "https://apiflor-com-br.umbler.net"
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
@@ -22,8 +22,8 @@ export class ServiceService {
   }
 
   // metodos de usuarios
-  getAllUser(): Observable<Usuario> {
-    return this.http.get<Usuario>(this.url + "/allUser")
+  getAllUser(): Observable<any> {
+    return this.http.get<any>(this.url + "/allUser")
   }
 
   postUsuario(user: Usuario): Observable<Usuario> {
@@ -36,7 +36,6 @@ export class ServiceService {
     return this.http.post<any>(this.url + "/login", data)
 
   }
-
 
   //metodos de clientes
   getClientes(): Observable<cliente> {
@@ -80,7 +79,7 @@ export class ServiceService {
   openMessagem(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 3000,
-      horizontalPosition: "end",
+      horizontalPosition: "start",
       panelClass: "msg-sucess"
     }
 
@@ -94,15 +93,25 @@ export class ServiceService {
         data: { name: 'austin' },
 
       });
+  }
+
+  //metodos de vendas
+  getVendas(): Observable<any> {
+    console.log("todas vendas")
+    return this.http.get<any>(`${this.url}/allvendas`)
+  }
+
+  confirmaVendas(venda: any): Observable<any> {
+    console.log("Chegou vendas")
+    return this.http.post<any>(this.url + '/insertvendas', venda)
 
   }
- 
-  //metodos de vendas
-  confirmaVendas(venda:any): Observable<any> {
-    console.log("Chegou vendas")
-    return this.http.post<any>(this.url +'/insertvendas',venda)
-    
-   }
+
+  getOneVenda(id): Observable<any> {
+    console.log('requisição chegando')
+    return this.http.get<any>(`${this.url}/filtrovenda/${id}`)
+  }
+
 
 }
 

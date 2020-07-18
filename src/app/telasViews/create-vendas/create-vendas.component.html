@@ -18,7 +18,7 @@
 
             </mat-form-field>
 
-            <mat-form-field appearance="fill" style="width: 50%;">
+            <mat-form-field appearance="fill" style="width: 30%;">
                 <mat-label>Selecione Cliente</mat-label>
                 <mat-select [formControl]="selectCliente" required>
 
@@ -29,6 +29,17 @@
                 <mat-error *ngIf="selectCliente.hasError('required')">Adicioner o Cliente</mat-error>
 
             </mat-form-field>
+
+            <mat-card style="height: 20px;">
+                <section class="example-section">
+
+                    <mat-radio-group [(ngModel)]="labelPosition">
+                        <mat-radio-button class="example-margin" style="margin:0px 14px" value="cartao">Cartão
+                        </mat-radio-button>
+                        <mat-radio-button class="example-margin" value="dinheiro">Em dinheiro</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+            </mat-card>
 
         </div>
 
@@ -67,22 +78,24 @@
     <mat-list *ngFor="let c of servFeito; let i = index" style="display: flex; ">
 
         <mat-list-item role="listitem" style="width: 50% !important;">
-            <h2>{{i+1}}</h2>   
+            <h3>{{i+1}}</h3>
         </mat-list-item>
 
         <mat-list-item role="listitem">
 
-            <h2>{{c.tipo}}</h2> 
+            <h3>{{c.tipo}}</h3>
         </mat-list-item>
 
         <mat-list-item role="listitem">
-            <h2>{{c.valor | currency : 'R$'}}</h2>   
+            <h3>{{c.valor | currency : 'R$'}}</h3>
         </mat-list-item>
 
-        <mat-list-item role="listitem" style="display:flex ; justify-content: center; width: 10px; margin-bottom: 10px;">
-            <button mat-fab color="accent" style=" width: 45px !important; height: 45px; display: flex; justify-content: center;" 
+        <mat-list-item role="listitem"
+            style="display:flex ; justify-content: center; width: 10px; margin-bottom: 10px;">
+            <button mat-fab color="accent"
+                style=" width: 45px !important; height: 45px; display: flex; justify-content: center;"
                 (click)='removerComprar(i)'>
-                <mat-icon style="line-height: 0.5 !important;" >delete</mat-icon>
+                <mat-icon style="line-height: 0.5 !important;">delete</mat-icon>
             </button>
         </mat-list-item>
 

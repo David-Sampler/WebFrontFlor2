@@ -1,0 +1,93 @@
+<mat-grid-list cols="2" rowHeight="3:1" gutterSize="10px">
+
+    <mat-grid-tile style="background-color: rgb(107, 15, 102); flex-direction: column;">
+        <div style="display: flex; justify-content: center; flex-direction: column;">
+            <h1 style="margin-right: 60px;">Cliente</h1>
+            <span class="material-icons" style="font-size: 80px; color: white;">
+                assignment_ind
+            </span>
+        </div>
+
+        <mat-list>
+            <mat-list-item>Nome</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Telefone</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Email</mat-list-item>
+            <mat-list-item>Endereco</mat-list-item>
+        </mat-list>
+
+        <mat-list>
+            <mat-list-item>{{dados.cliente.nome}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{dados.cliente.telefone}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{dados.cliente.email}}</mat-list-item>
+            <mat-list-item>{{dados.cliente.endereco.rua}} N°{{dados.cliente.endereco.numero}}</mat-list-item>
+        </mat-list>
+    </mat-grid-tile>
+
+    <mat-grid-tile style="background-color: rgb(15, 78, 107); flex-direction: columns !important;">
+        <div style="display: flex; justify-content: center; flex-direction: column;">
+            <h1 style="margin-right: 60px;">Atedente</h1>
+            <span class="material-icons" style="font-size: 80px; color: white;">
+                account_circle
+            </span>
+        </div>
+        <mat-list>
+
+            <mat-list-item>Nome</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Data</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Venda no</mat-list-item>
+
+        </mat-list>
+
+        <mat-list>
+            <mat-list-item>{{dados.usuario}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{data}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{dados.pagamento}}</mat-list-item>
+
+        </mat-list>
+
+    </mat-grid-tile>
+
+
+
+
+</mat-grid-list>
+
+<mat-grid-list cols="1" rowHeight="4:1" style="margin-top: 10px;">
+
+
+    <mat-grid-tile style="background-color: rgb(107, 15, 102);   flex-direction: column;">
+        <mat-list *ngFor='let serv of servicos; let i = index'>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item style="background-color: rgb(46, 46, 46)">{{serv.tipo}}</mat-list-item>
+            <mat-list-item>{{serv.valor | currency : 'R$'}}</mat-list-item>
+
+            <mat-divider></mat-divider>
+
+
+        </mat-list>
+
+        <mat-list>
+
+            <div>
+                <h2 style="color: white; margin-left: 50px;">Total R$</h2>
+                <h2 style="color: white; margin-left: 50px;font-size: 30px;">{{dados.totalVenda | currency : 'R$'}}</h2>
+            </div>
+
+
+
+        </mat-list>
+
+    </mat-grid-tile>
+
+
+</mat-grid-list>

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ServiceService } from 'src/app/services/service.service';
-import { isNull } from 'util';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-vendas',
@@ -13,9 +13,15 @@ import { isNull } from 'util';
 
 export class CreateVendasComponent implements OnInit {
 
-  nome = "david"
+  checked = false;
+  indeterminate = false;
+  labelPosition: 'cartao' | 'dinheiro' = 'dinheiro';
+  disabled = false;
 
-  constructor(private server: ServiceService) {
+
+
+
+  constructor(private server: ServiceService, private snackBar: MatSnackBar) {
 
   }
 
@@ -23,9 +29,6 @@ export class CreateVendasComponent implements OnInit {
   usuarioControl = new FormControl('', Validators.required);
   selectCliente = new FormControl('', Validators.required);
   servicoControl = new FormControl('', Validators.required);
-
-
-
 
   total = 0
   clientes
@@ -35,7 +38,7 @@ export class CreateVendasComponent implements OnInit {
   servFeito = []
 
   ngOnInit(): void {
-
+    console.log(this.labelPosition)
     this.getClientes()
     this.getUser()
     this.getServicos()
@@ -88,37 +91,50 @@ export class CreateVendasComponent implements OnInit {
   }
 
   finalizarCompra() {
-    
+
     let form = {
       usuario: this.usuarioControl.value.nome,
       cliente: this.selectCliente.value,
-      servico: this.servFeito
+      servico: this.servFeito,
+      totalVenda: this.total,
+      pagamento: this.labelPosition
     }
-    
 
-    console.log(form)
-
-    if(form.usuario == undefined || form.cliente=="" ){
-          alert("Campos a ser preenchido")
-    }else{
+    if (form.usuario == undefined || form.cliente == "") {
+      alert("Campos a ser preenchido")
+    } else {
       this.server.confirmaVendas(form).subscribe((res) => {
         console.log(res)
       })
     }
-   
+    this.openMessagem("Compra finalizada", "")
+    this.limparCampos()
   }
 
-
-
-
-
+  limparCampos() {
+    this.usuarioControl.reset()
+    this.servicoControl.reset()
+    this.selectCliente.reset()
+    this.servFeito = []
+    this.total = 0
+  }
 
 
   removerComprar(id) {
     console.log(this.servFeito, "ANTES")
-    this.servFeito.splice(id,1)
+    this.servFeito.splice(id, 1)
     console.log(this.servFeito, "depois")
     this.somarTotal()
-  
+
+  }
+
+  openMessagem(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      //horizontalPosition: "start",
+      panelClass: "msg-sucess"
+    }
+
+    );
   }
 }

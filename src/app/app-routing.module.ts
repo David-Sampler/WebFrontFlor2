@@ -18,6 +18,8 @@ import { LoginComponent } from './component/login/login.component';
 import { ContainerComponent } from './component/container/container.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { AuthGuard } from './shared/auth.guard';
+import { TableVendasComponent } from './telasViews/table-vendas/table-vendas.component';
+import { DetalheComprasComponent } from './telasViews/detalhe-compras/detalhe-compras.component';
 
 
 
@@ -43,15 +45,14 @@ const routes: Routes = [
 
       { path: 'tableclientes', component: TableCliComponent },
       { path: 'updatecliente/:id', component: UpdateComponent },
+      { path: "tablevendas", component: TableVendasComponent },
+      { path: 'detalhevendas/:id', component: DetalheComprasComponent }
     ],
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: "login", component: LoginComponent,
   }
-
-
-
 
 
 ];

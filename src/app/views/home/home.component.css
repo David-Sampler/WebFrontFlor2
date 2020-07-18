@@ -3,15 +3,40 @@
     margin: 20px;
   }
   
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+
 
 .fotos{
     display: flex;
-    height: 100%;
+ 
     justify-content: center;
-   
-   
+}
+ 
+.mat-grid-tile{
+  background-color: cadetblue;
+ 
+  
+}
+
+.foto{
+  width: 100%;
+  height: 100vh;
+  background: url(../../../assets/foto2.png) no-repeat center center;
+   background-size: cover
+}
+
+
+
+@media(max-width:600px){
+  .fotos{
+    display: flex;
+    flex-direction: column;
+  }
+.avatar{
+  width: 100%;
+}
+
+.inicio{
+  display: none;
+}
+
 }

@@ -1,0 +1,34 @@
+<form class="example-form"
+    style="width: 100%; height: 400px; display: flex; flex-direction: column;justify-content: center;">
+    <mat-form-field class="example-full-width">
+        <mat-label>Titulo de anotação</mat-label>
+        <input [formControl]="titulo" matInput placeholder="Limpeza" value="Sushi">
+    </mat-form-field>
+
+
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Texto da anotação</mat-label>
+        <textarea [formControl]="texto" matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <mat-select [formControl]="serviceControl">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+
+
+    <button mat-raised-button color="primary" style="margin-top: 20px;" (click)="pegardados()">Salva</button>
+    <div *ngFor="let c of dataSource; let i = index">
+        <h1>{{c.nome}}</h1>
+    </div>
+
+
+</form>

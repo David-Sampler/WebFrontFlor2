@@ -51,7 +51,7 @@ export class CreateClientesComponent implements OnInit {
   }
 
  peganome(evento:KeyboardEvent){
-   console.log((<HTMLInputElement>evento.target).value)
+   //console.log((<HTMLInputElement>evento.target).value)
  }
 
 

@@ -14,39 +14,42 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 
 export class TableCliComponent implements OnInit {
-  
 
-  displayedColumns: string[] = ['position', 'nome', 'endereco', 'telefone','email','action'];
+
+  displayedColumns: string[] = ['position', 'nome', 'endereco', 'telefone', 'email', 'action'];
   dataSource
 
-  constructor(private server:ServiceService,private route:Router,private dialog: MatDialog ) { }
+  constructor(private server: ServiceService, private route: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-      this.getClientes()
+
+    this.getClientes()
+
   }
 
-  getClientes(){
-    this.server.getClientes().subscribe((res)=>{
-     this.dataSource = res
+  getClientes() {
+    this.server.getClientes().subscribe((res) => {
+      this.dataSource = res
+      console.log(res)
     })
   }
 
-  delCliente(id){  
-    
-    this.server.confirmMess().afterClosed().subscribe((resposta) => {      
-      let res = resposta     
-      
+  delCliente(id) {
+
+    this.server.confirmMess().afterClosed().subscribe((resposta) => {
+      let res = resposta
+
       if (res == true) {
         this.server.deleteCliente(id).subscribe(() => {
-          this.server.openMessagem("Excluido com sucesso","")       
+          this.server.openMessagem("Excluido com sucesso", "")
           this.getClientes()
-            this.route.navigate(['/tableclientes'])  
-           
+          this.route.navigate(['/tableclientes'])
+
         })
       } else {
         console.log('Sair')
       }
     })
 
- }
+  }
 }

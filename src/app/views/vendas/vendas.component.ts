@@ -20,4 +20,9 @@ export class VendasComponent implements OnInit {
   }
 
 
+  tableVendas(){
+    this.router.navigate(['/tablevendas'])
+  }
+
+
 }
