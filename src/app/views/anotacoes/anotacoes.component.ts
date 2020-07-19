@@ -11,39 +11,25 @@ import { map } from 'rxjs/operators';
 
 export class AnotacoesComponent implements OnInit {
   selectedValue: string;
-  selectedCar: string;
 
-  foods: any[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' }
-  ];
+  date = new Date()
 
+  dataSource: any[] = [];
 
+  obj
 
   constructor(private server: ServiceService) { }
 
   titulo = new FormControl('', Validators.required);
   texto = new FormControl('', Validators.required);
-  serviceControl = new FormControl('', Validators.required)
+  usuario = new FormControl('', Validators.required)
 
-  dataSource
+
   usuarios
 
   ngOnInit(): void {
     this.user()
-    this.pegardados()
-  }
 
-
-  pegardados() {
-    let obj = {
-      titulo: this.titulo.value,
-      texto: this.texto.value,
-      usuario: this.serviceControl.value
-    }
-
-    console.log(obj)
   }
 
   user() {
@@ -53,6 +39,22 @@ export class AnotacoesComponent implements OnInit {
     })
 
   }
+
+  insertAnotacao() {
+
+    let form = {
+      titulo: this.titulo,
+      texto: this.texto.value.nome,
+      usuario: this.usuario.value,
+      data: this.date
+    }
+
+    this.server.insertAnotacao(form).subscribe((res) => {
+      console.log(res)
+
+    })
+  }
+
 
 
 }

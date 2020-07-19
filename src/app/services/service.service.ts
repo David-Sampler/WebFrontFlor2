@@ -112,8 +112,17 @@ export class ServiceService {
     return this.http.get<any>(`${this.url}/filtrovenda/${id}`)
   }
 
+  //ANOTAÇÕES METODOS
+
+  insertAnotacao(dados): Observable<any> {
+    console.log("chegando aqui")
+    return this.http.get<any>(`${this.url}/insertAnotacao`, dados)
+  }
 
 }
+
+
+
 
 
 
