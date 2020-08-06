@@ -1,7 +1,21 @@
-
 <div class="example-button-row">
-    
-    <button mat-raised-button color="primary" (click)='navegar()' >Vender</button>
-    <button mat-raised-button color="accent" (click)='tableVendas()' >Lista Vendas</button>
-   
-  </div>
+
+  <button mat-raised-button color="primary" (click)='navegar()'>
+    Venda
+    <span class="material-icons" style="margin-left: 10px ;">
+      add_shopping_cart
+    </span>
+  </button>
+  <button mat-raised-button color="accent" (click)='tableVendas()'>Lista Vendas
+    <span class="material-icons" style="margin-left: 10px ">
+      view_list
+    </span>
+  </button>
+
+  <button mat-raised-button color="accent" routerLink="/combos">Combos
+    <span class="material-icons" style="margin-left: 10px ">
+      view_list
+    </span>
+  </button>
+
+</div>

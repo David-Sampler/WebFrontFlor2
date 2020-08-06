@@ -29,9 +29,14 @@ export class CreateServicosComponent implements OnInit {
     const servico = await this.server.insertServicos(this.formulario.value)
     console.log(servico)
     this.server.openMessagem("Serviço Cadastrado com sucesso", "")
+    this.limparCampos()
+
 
   }
 
+  limparCampos() {
+    this.formulario.reset()
+  }
 
 
 

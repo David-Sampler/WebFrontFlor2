@@ -1,23 +1,16 @@
-.principal{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
-    margin-top: 40px;
-    width: 100%;
-    
-}
+
 .mat-card{
-   width: 50%;
+   width: 98%;
+  
   
 }
 .example-full-width{
-    margin: 10px;
-    width: 90%;
+
+    width: 100%;
 }
 
 button{
-    width: 300px;
+    width: 200px;
     height: 50px;
     margin: 10px;
 }

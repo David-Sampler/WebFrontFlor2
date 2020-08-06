@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/services/service.service';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-anotacoes',
@@ -18,7 +19,7 @@ export class AnotacoesComponent implements OnInit {
 
   obj
 
-  constructor(private server: ServiceService) { }
+  constructor(private server: ServiceService, private router: Router) { }
 
   titulo = new FormControl('', Validators.required);
   texto = new FormControl('', Validators.required);
@@ -43,16 +44,21 @@ export class AnotacoesComponent implements OnInit {
   insertAnotacao() {
 
     let form = {
-      titulo: this.titulo,
-      texto: this.texto.value.nome,
-      usuario: this.usuario.value,
+      titulo: this.titulo.value,
+      texto: this.texto.value,
+      usuario: this.usuario.value.nome,
       data: this.date
     }
+    console.log(form)
 
     this.server.insertAnotacao(form).subscribe((res) => {
       console.log(res)
 
     })
+
+
+
+
   }
 
 

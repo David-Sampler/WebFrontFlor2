@@ -32,13 +32,13 @@ export class LoginComponent implements OnInit {
 
   getDados() {
     const dado = this.form.value
-    console.log(dado)    
+    console.log(dado)
 
 
-    this.server.login(this.form.value).subscribe((res) => {   
-      console.log(res)   
-      
-      if (res==null) {
+    this.server.login(this.form.value).subscribe((res) => {
+      console.log(res)
+
+      if (res == null) {
 
         console.log("aqui")
         return this.server.openMessagem("Email ou senha invalido", "")
@@ -51,12 +51,13 @@ export class LoginComponent implements OnInit {
 
         this.cena = false
         this.modelo = 'indeterminate'
+
         setTimeout(() => {
           this.modelo = 'indeterminate'
           return this.router.navigate(['/'])
         }, 4000)
-        
-        
+
+
       }
 
 

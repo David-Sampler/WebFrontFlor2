@@ -6,20 +6,23 @@
     align-items: center;
 }
 .btn{
-    width: 240px;
-    height: 48px;
-    margin-top: 20px;
+    width: 300px;
+    height: 50px;
+    margin-top: 30px;
     background-color: seagreen;
     
 }
 
 .cardP{
-    width: 50%;
-    height: 330px;
+    width: 70%;
+    height: 340px;
     max-width: 400px; 
     text-align: center;
     transition: ease-in all 1.2s;
 
+}
+.btn:hover{
+    background-color: cornflowerblue;
 }
 
 @media (max-width: 800px) {  
@@ -32,7 +35,7 @@
     .cardP{
    
        width: 70%;
-       height: 300px;
+       height: 400px;
        text-align: center;        
        transition: ease-in all 1.6s;
     }

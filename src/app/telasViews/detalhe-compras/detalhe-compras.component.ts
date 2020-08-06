@@ -30,9 +30,7 @@ export class DetalheComprasComponent implements OnInit {
       this.dados = res
       this.servicos = res.servico
       this.data = res.criado.split("T")[0].split('-').reverse().join('/')
-      console.log(this.data)
-
-
+      console.log(this.dados)
     }
 
     )

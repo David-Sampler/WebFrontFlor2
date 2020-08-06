@@ -1,32 +1,38 @@
-<p style="background-color: teal; color: white; border-radius: 50px; width: 200px; text-align: center; padding: 5px;">Cadastra Serviços</p>
+<div class="principal">
+  <mat-card>
+    <mat-card-title>
+      <p style="font-size: 20px; margin: 5px;">Serviço</p>
 
-<div class="principal" >
-    <mat-card>
-      <mat-card-title style="font-size: 20px;" style="text-align: center;">Insira os serviços
-        
-        <div class="example-form" [formGroup]='formulario' >
-  
-          <mat-form-field class="example-full-width">
-            <mat-label>Nome</mat-label>
-            <input matInput placeholder="Ex. Massagem Modeladora"   formControlName="tipo" >
-          </mat-form-field>
-  
-          <mat-form-field class="example-full-width">
-            <mat-label>Valor</mat-label>
-            <input matInput placeholder="Ex. Valor do serviço" type="number" formControlName="valor">
-          </mat-form-field>
-                
-       
-  
-        </div>
-  
-        <button class="btn" mat-raised-button color="primary" [disabled] = "!formulario.valid" (click)="createServico()" >Salvar</button>
-        <button mat-raised-button color="accent" routerLink="/clientes">Cancelar</button>
-  
-  
-      </mat-card-title>
-  
-    </mat-card>
-  
-  
-  </div>
+      <div class="example-form" [formGroup]='formulario'>
+
+        <mat-form-field class="example-full-width" style="margin: 10px ;">
+          <mat-label style="font-size: 16px;">Nome</mat-label>
+          <input matInput placeholder="Ex. Massagem Modeladora" formControlName="tipo">
+          <span matSuffix class="material-icons" style="margin-right: 20px;">
+            business_center
+          </span>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" style="margin: 10px">
+          <mat-label style="font-size: 16px;">R$</mat-label>
+          <input matInput placeholder=" Ex. Valor do serviço" type="number" formControlName="valor">
+          <span matSuffix class="material-icons" style="margin-right: 20px;">
+            monetization_on
+          </span>
+        </mat-form-field>
+
+
+
+      </div>
+
+      <button class="btn" mat-raised-button color="primary" [disabled]="!formulario.valid"
+        (click)="createServico()">Salvar</button>
+      <button mat-raised-button color="accent" routerLink="/clientes">Cancelar</button>
+
+
+    </mat-card-title>
+
+  </mat-card>
+
+
+</div>

@@ -1,0 +1,25 @@
+<div style="height: 100%;overflow: auto; ">
+
+    <mat-card *ngFor="let c of dados">
+        <mat-card-title>
+            <mat-chip style="background-color: rgb(62, 45, 223); color: white;" matBadgeColor="accent">{{c.usuario}}
+            </mat-chip>
+        </mat-card-title>
+        <mat-card-content>
+            <h1 style="font-weight: 800;">{{c.titulo}}</h1>
+            <p>
+                {{c.texto}}
+            </p>
+        </mat-card-content>
+
+
+        <div style="width: 100%; display: flex; justify-content: flex-end; ">
+            <button style="margin-left: 10px; width: 100px;" mat-raised-button color="warn"
+                (click)="delanotacao(c.id)">Apagar</button>
+        </div>
+    </mat-card>
+
+
+
+
+</div>

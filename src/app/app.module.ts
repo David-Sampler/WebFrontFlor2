@@ -9,10 +9,6 @@ import { MenuComponent } from './component/menu/menu.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-
-
-
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -49,13 +45,19 @@ import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { LoginComponent } from './component/login/login.component';
 import { ContainerComponent } from './component/container/container.component';
-import { AutenticacaoComponent } from './component/autenticacao/autenticacao.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { MatSelectModule } from '@angular/material/select';
 import { TableVendasComponent } from './telasViews/table-vendas/table-vendas.component';
 import { DetalheComprasComponent } from './telasViews/detalhe-compras/detalhe-compras.component';
 import { AnotacoesComponent } from './views/anotacoes/anotacoes.component';
+import { AnotacoesGeralComponent } from './views/anotacoes-geral/anotacoes-geral.component';
+import { ResumovendaComponent } from './telasViews/create-vendas/resumovenda/resumovenda.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CreateCombosComponent } from './telasViews/create-combos/create-combos.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -80,10 +82,12 @@ registerLocaleData(localePt, 'pt');
     TableServicosComponent,
     LoginComponent,
     ContainerComponent,
-    AutenticacaoComponent,
     TableVendasComponent,
     DetalheComprasComponent,
     AnotacoesComponent,
+    AnotacoesGeralComponent,
+    ResumovendaComponent,
+    CreateCombosComponent,
 
 
   ],
@@ -111,7 +115,13 @@ registerLocaleData(localePt, 'pt');
     MatProgressSpinnerModule,
     MatSelectModule,
     MatRadioModule,
-    MatGridListModule
+    MatGridListModule,
+    MatChipsModule,
+    MatBadgeModule,
+    MatDividerModule,
+
+
+
   ],
   providers: [MatDatepickerModule, { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent],

@@ -20,6 +20,7 @@ import { MenuComponent } from './component/menu/menu.component';
 import { AuthGuard } from './shared/auth.guard';
 import { TableVendasComponent } from './telasViews/table-vendas/table-vendas.component';
 import { DetalheComprasComponent } from './telasViews/detalhe-compras/detalhe-compras.component';
+import { CreateCombosComponent } from './telasViews/create-combos/create-combos.component';
 
 
 
@@ -42,11 +43,12 @@ const routes: Routes = [
       { path: 'tableservicos', component: TableServicosComponent },
 
       { path: 'creatervendas', component: CreateVendasComponent },
-
+      { path: 'combos', component: CreateCombosComponent },
       { path: 'tableclientes', component: TableCliComponent },
       { path: 'updatecliente/:id', component: UpdateComponent },
       { path: "tablevendas", component: TableVendasComponent },
       { path: 'detalhevendas/:id', component: DetalheComprasComponent }
+
     ],
     canActivate: [AuthGuard]
   },

@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ServiceService } from 'src/app/services/service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { ResumovendaComponent } from './resumovenda/resumovenda.component';
+
 
 @Component({
   selector: 'app-create-vendas',
@@ -18,27 +21,25 @@ export class CreateVendasComponent implements OnInit {
   labelPosition: 'cartao' | 'dinheiro' = 'dinheiro';
   disabled = false;
 
+  detalhes
 
-
-
-  constructor(private server: ServiceService, private snackBar: MatSnackBar) {
+  constructor(private server: ServiceService, private snackBar: MatSnackBar,
+    private dialog: MatDialog, private dialogRef: MatDialog) {
 
   }
-
 
   usuarioControl = new FormControl('', Validators.required);
   selectCliente = new FormControl('', Validators.required);
   servicoControl = new FormControl('', Validators.required);
 
-  total = 0
+  total
   clientes
   usuarios
   servico
 
   servFeito = []
-
   ngOnInit(): void {
-    console.log(this.labelPosition)
+
     this.getClientes()
     this.getUser()
     this.getServicos()
@@ -62,7 +63,6 @@ export class CreateVendasComponent implements OnInit {
   getServicos() {
     this.server.allServicos().subscribe((res) => {
       this.servico = res
-      console.log(res)
     })
   }
 
@@ -70,7 +70,6 @@ export class CreateVendasComponent implements OnInit {
   addServico() {
 
     let selecionado = (this.servicoControl.value)
-    console.log(selecionado)
     this.servFeito.push(selecionado)
     this.somarTotal()
     this.servicoControl.reset()
@@ -80,8 +79,6 @@ export class CreateVendasComponent implements OnInit {
     let detalhes = 0
 
     this.servFeito.forEach((res) => {
-
-      console.log(res.valor)
       detalhes += res.valor
 
     })
@@ -91,14 +88,26 @@ export class CreateVendasComponent implements OnInit {
   }
 
   finalizarCompra() {
+    let data = new Date()
+    console.log(data)
 
     let form = {
       usuario: this.usuarioControl.value.nome,
       cliente: this.selectCliente.value,
       servico: this.servFeito,
       totalVenda: this.total,
-      pagamento: this.labelPosition
+      pagamento: this.labelPosition,
+      momento: {
+        date: data.toLocaleDateString(),
+        hora: data.toLocaleTimeString()
+      }
+
     }
+
+    console.log(form)
+
+
+    localStorage.setItem('total', this.total);
 
     if (form.usuario == undefined || form.cliente == "") {
       alert("Campos a ser preenchido")
@@ -108,6 +117,7 @@ export class CreateVendasComponent implements OnInit {
       })
     }
     this.openMessagem("Compra finalizada", "")
+    this.verificarTroco()
     this.limparCampos()
   }
 
@@ -136,5 +146,14 @@ export class CreateVendasComponent implements OnInit {
     }
 
     );
+  }
+
+  verificarTroco() {
+    const dialogConfig = new MatDialogConfig()
+    dialogConfig.width = "400px",
+
+      this.dialog.open(ResumovendaComponent, dialogConfig)
+
+
   }
 }

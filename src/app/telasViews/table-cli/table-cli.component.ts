@@ -16,7 +16,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TableCliComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['position', 'nome', 'endereco', 'telefone', 'email', 'action'];
+  displayedColumns: string[] = ['position', 'nome', 'telefone', 'email', 'action'];
+
   dataSource
 
   constructor(private server: ServiceService, private route: Router, private dialog: MatDialog) { }

@@ -12,7 +12,7 @@ import { DialogMessagemComponent } from '../dialog-messagem/dialog-messagem.comp
   providedIn: 'root'
 })
 export class ServiceService {
-  // https://apiflor-com-br.umbler.net/
+  //url = 'http://localhost:3000' 
   url = "https://apiflor-com-br.umbler.net"
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
@@ -114,9 +114,18 @@ export class ServiceService {
 
   //ANOTAÇÕES METODOS
 
-  insertAnotacao(dados): Observable<any> {
+  allAnotacoes(): Observable<any> {
+    return this.http.get(`${this.url}/allanotacao`)
+  }
+
+  insertAnotacao(dados: any): Observable<any> {
     console.log("chegando aqui")
-    return this.http.get<any>(`${this.url}/insertAnotacao`, dados)
+    return this.http.post<any>(this.url + '/insertAnotacao', dados)
+  }
+
+  deletarAnotacao(id) {
+    console.log("chegando delete")
+    return this.http.delete(this.url + '/deleteAnotacao/', id)
   }
 
 }
